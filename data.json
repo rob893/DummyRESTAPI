@@ -1,0 +1,38 @@
+{
+    "DummyData": [
+        {
+            "Data": "1234"
+        },
+        {
+            "Data": "4567"
+        }
+    ],
+    "Customers": [
+        {
+            "CustomerID": 1,
+            "Name": "Bob"
+        },
+        {
+            "CustomerID": 2,
+            "Name": "Joe"
+        },
+        {
+            "CustomerID": 3,
+            "Name": "Max"
+        }
+    ],
+    "Products": [
+        {
+            "Name": "TV",
+            "Price": 50,
+            "ProductID": 1,
+            "CurrencyCode": "USD"
+        },
+        {
+            "Name": "Car",
+            "Price": 5000,
+            "ProductID": 2,
+            "CurrencyCode": "USD"
+        }
+    ]
+}
