@@ -1,10 +1,13 @@
 {
     "DummyData": [
         {
-            "Data": "1234"
+            "Data": "Dummy data 1"
         },
         {
-            "Data": "4567"
+            "Data": "Dummy data 2"
+        },
+        {
+            "Data": "Dummy data 3"
         }
     ],
     "Customers": [

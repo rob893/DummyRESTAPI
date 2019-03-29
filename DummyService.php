@@ -66,6 +66,105 @@ class DummyService {
         return $response;
     }
 
+    public function getCustomers(Request $request, Response $response): Response {
+        
+        $dummyData = json_decode(file_get_contents("data.json"));
+
+        if($dummyData != false) {
+            $dataArray = get_object_vars($dummyData);
+
+            if($request->hasAttribute("Customers") && array_key_exists("Customers", $dataArray)) {
+                $customers = $dataArray["Customers"];
+                
+                $response->setResponseBody($customers);
+                $response->setStatusCode(200);
+            }
+            else {
+                $response->setResponseBody(["message" => "Error obtaining customer information."]);
+                $response->setStatusCode(400);
+            }
+        }
+        else {
+            $response->setResponseBody(["message" => "Error opening data file."]);
+            $response->setStatusCode(400);
+        }
+        
+        $this->respondWithJSON($response);
+
+        return $response;
+    }
+
+    public function getProduct(Request $request, Response $response): Response {
+        
+        $dummyData = json_decode(file_get_contents("data.json"));
+
+        if($dummyData != false) {
+            $dataArray = get_object_vars($dummyData);
+
+            if($request->hasAttribute("ProductID") && array_key_exists("Products", $dataArray)) {
+                $productID = $request->getAttribute("ProductID")[0];
+                $products = $dataArray["Products"];
+                $product = null;
+
+                foreach($products as $productData) {
+                    if($productData->ProductID == $productID) {
+                        $product = get_object_vars($productData);
+                        break;
+                    }
+                }
+
+                if($product != null) {
+                    $response->setResponseBody($product);
+                    $response->setStatusCode(200);
+                }
+                else {
+                    $response->setResponseBody(["message" => "No product exists with that id."]);
+                    $response->setStatusCode(400);
+                }
+            }
+            else {
+                $response->setResponseBody(["message" => "Error obtaining product information."]);
+                $response->setStatusCode(400);
+            }
+        }
+        else {
+            $response->setResponseBody(["message" => "Error opening data file."]);
+            $response->setStatusCode(400);
+        }
+        
+        $this->respondWithJSON($response);
+
+        return $response;
+    }
+
+    public function getProducts(Request $request, Response $response): Response {
+        
+        $dummyData = json_decode(file_get_contents("data.json"));
+
+        if($dummyData != false) {
+            $dataArray = get_object_vars($dummyData);
+
+            if($request->hasAttribute("Products") && array_key_exists("Products", $dataArray)) {
+                $products = $dataArray["Products"];
+
+                $response->setResponseBody($products);
+                $response->setStatusCode(200);
+            }
+            else {
+                $response->setResponseBody(["message" => "Error obtaining product information."]);
+                $response->setStatusCode(400);
+            }
+        }
+        else {
+            $response->setResponseBody(["message" => "Error opening data file."]);
+            $response->setStatusCode(400);
+        }
+        
+        $this->respondWithJSON($response);
+
+        return $response;
+    }
+
     public function getDummyData(Request $request, Response $response): Response {
         $dummyData = json_decode(file_get_contents("data.json"));
         

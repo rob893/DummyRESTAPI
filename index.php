@@ -19,8 +19,17 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET)) {
     if($request->hasAttribute('CustomerID')) {
         $dummyService->getCustomer($request, $response);
     }
+    else if($request->hasAttribute('Customers')) {
+        $dummyService->getCustomers($request, $response);
+    }
     else if($request->hasAttribute('DummyData')) {
         $dummyService->getDummyData($request, $response);
+    }
+    else if($request->hasAttribute('ProductID')) {
+        $dummyService->getProduct($request, $response);
+    }
+    else if($request->hasAttribute('Products')) {
+        $dummyService->getProducts($request, $response);
     }
     else {
         $dummyService->getAllData($request, $response);
