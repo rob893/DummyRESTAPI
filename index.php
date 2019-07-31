@@ -2,9 +2,6 @@
 //This is a dummy API for testing
 declare(strict_types = 1);
 
-header('Access-Control-Allow-Origin: *');
-header('Accept: application/json');
-
 
 require("Response.php");
 require("Request.php");
